@@ -1,0 +1,32 @@
+// Price Calculator & Evaluator
+//Using PyCharm IDE 
+
+# Step 1: Creating the list of items and their prices
+my_list = ['LED', 1.50, 'Switch', 5, 'Resistor', 0.75, 'Motor', 45, 'Battery', 120]
+print("Original List:", my_list)
+
+# Step 2: Function to calculate total cost
+def calculate_total_cost(item_list):
+    total_cost = 0
+    i = 1  # Start at index 1 (which is the first price)
+
+    while i < len(item_list):
+        total_cost += item_list[i]  # Add the price to the total cost
+        i += 2  # Skip the item name and move to the next price index
+
+    return total_cost
+
+# Step 3: Function to print the cost message
+def print_cost_message(total_cost):
+    if total_cost > 150:
+        print("The cost is too high")
+    elif total_cost > 50:
+        print("The price is reasonable")
+    else:
+        print("The price is too low, check the costing again")
+
+# Calculating total cost
+total = calculate_total_cost(my_list)
+print("Total cost:", total)
+# Printing the appropriate message based on the total cost
+print_cost_message(total)
