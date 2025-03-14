@@ -1,0 +1,32 @@
+
+int trigPin = 9;
+int echoPin = 8;
+int fanPin = 10;
+float duration_us;
+float distance_cm;
+
+void setup() {
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT);
+  pinMode(fanPin, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  noInterrupts();
+  duration_us = pulseIn(echoPin, HIGH);
+  interrupts();
+
+  distance_cm = 0.017 * duration_us;
+
+  // Change threshold to the suitable distance for you
+  if(distance_cm <= 5){
+    digitalWrite(fanPin, HIGH);  // Fan ON
+  }
+  else{
+    digitalWrite(fanPin, LOW);   // Fan OFF
+  }
+}
